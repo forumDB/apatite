@@ -1,0 +1,52 @@
+<div class="panel-full-width panel-border member-bg1" id="poll-panel">
+	<div class="inner posting-after-poll-wrapper">
+		<div class="posting-after-poll-left">
+			<fieldset class="posting-after-poll">
+	<!-- IF S_SHOW_POLL_BOX -->
+	<p>{L_ADD_POLL_EXPLAIN}</p>
+	<!-- ENDIF -->
+
+
+	<!-- IF S_POLL_DELETE -->
+	<div class="checkbox">
+		<input type="checkbox" name="poll_delete" id="poll_delete"<!-- IF S_POLL_DELETE_CHECKED --> checked="checked"<!-- ENDIF -->>
+		<label for="poll_delete">{L_POLL_DELETE}</label>
+	</div>
+	<!-- ENDIF -->
+
+	<!-- IF S_SHOW_POLL_BOX -->
+		<dl>
+			<dd><input type="text" name="poll_title" id="poll_title" maxlength="100" value="{{ POLL_TITLE }}" class="inputbox" placeholder="{{ lang('POLL_QUESTION') }}" /></dd>
+		</dl>
+		<dl>
+			<dt><label for="poll_option_text">{L_POLL_OPTIONS}{L_COLON}</label><br><span>{L_POLL_OPTIONS_EXPLAIN}</span></dt>
+			<dd><textarea name="poll_option_text" id="poll_option_text" rows="5" cols="35" class="inputbox">{POLL_OPTIONS}</textarea></dd>
+		</dl>
+	</fieldset>
+	</div>
+	<div class="posting-after-poll-right">
+		<fieldset class="posting-after-poll">
+		<dl>
+			<dt><label for="poll_max_options">{L_POLL_MAX_OPTIONS}{L_COLON}</label></dt>
+			<dd><input type="number" min="0" max="999" name="poll_max_options" id="poll_max_options" value="{POLL_MAX_OPTIONS}" class="inputbox autowidth" /></dd>
+			<dd>{L_POLL_MAX_OPTIONS_EXPLAIN}</dd>
+		</dl>
+		<dl>
+			<dt><label for="poll_length">{L_POLL_FOR}{L_COLON}</label></dt>
+			<dd><label for="poll_length"><input type="number" min="0" max="999" name="poll_length" id="poll_length" value="{POLL_LENGTH}" class="inputbox autowidth" /> {L_DAYS}</label></dd>
+			<dd>{L_POLL_FOR_EXPLAIN}</dd>
+		</dl>
+		<!-- IF S_POLL_VOTE_CHANGE -->
+		<div class="checkbox">
+			<input type="checkbox" name="poll_vote_change" id="poll_vote_change" {VOTE_CHANGE_CHECKED}>
+			<label for="poll_vote_change">{L_POLL_VOTE_CHANGE}</label>
+			{L_POLL_VOTE_CHANGE_EXPLAIN}
+		</div>
+		<!-- ENDIF -->
+	<!-- ENDIF -->
+</fieldset>
+	<!-- EVENT posting_poll_body_options_after -->
+</div>
+
+	</div>
+</div>

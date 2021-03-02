@@ -1,0 +1,174 @@
+<!-- INCLUDE ucp_header.html -->
+
+<h2>{L_TITLE}<!-- IF CUR_FOLDER_NAME -->{L_COLON} {CUR_FOLDER_NAME}<!-- ENDIF --></h2>
+
+<form id="viewfolder" method="post" action="{S_PM_ACTION}">
+
+<!-- IF S_DISPLAY_HISTORY and (U_VIEW_PREVIOUS_HISTORY or U_VIEW_NEXT_HISTORY) -->
+	<fieldset class="display-options clearfix">
+		<!-- IF U_VIEW_PREVIOUS_HISTORY -->
+			<a href="{U_VIEW_PREVIOUS_HISTORY}" class="left-box arrow-{S_CONTENT_FLOW_BEGIN}">
+				<i class="icon fa-angle-{S_CONTENT_FLOW_BEGIN} fa-fw icon-black" aria-hidden="true"></i><span>{L_VIEW_PREVIOUS_HISTORY}</span>
+			</a>
+		<!-- ENDIF -->
+		<!-- IF U_VIEW_NEXT_HISTORY -->
+			<a href="{U_VIEW_NEXT_HISTORY}" class="right-box arrow-{S_CONTENT_FLOW_END}">
+				<i class="icon fa-angle-{S_CONTENT_FLOW_END} fa-fw icon-black" aria-hidden="true"></i><span>{L_VIEW_NEXT_HISTORY}</span>
+			</a>
+		<!-- ENDIF -->
+	</fieldset>
+<!-- ENDIF -->
+
+
+<div id="post-{MESSAGE_ID}" class="pm-post pm has-profile<!-- IF S_POST_UNAPPROVED or S_POST_REPORTED --> reported<!-- ENDIF --><!-- IF S_ONLINE --> online<!-- ENDIF -->">
+<div class="inner">
+
+	<div class="inner">
+	  <div class="pm-header">
+	    <h3 class="pm-subject">
+	      {SUBJECT}
+	    </h3>
+
+			<!-- DEFINE $SHOW_PM_POST_BUTTONS = (U_EDIT or U_DELETE or U_REPORT or U_QUOTE) -->
+			<!-- EVENT ucp_pm_viewmessage_post_buttons_list_before -->
+			<!-- IF $SHOW_PM_POST_BUTTONS -->
+	    <div class="pm-header-icons">
+				<!-- EVENT ucp_pm_viewmessage_post_buttons_before -->
+				<!-- IF U_DELETE -->
+					<a href="{U_DELETE}" title="{L_DELETE_MESSAGE}">
+						<i class="fa fa-trash" style="vertical-align: middle;"></i>
+						<span class="sr-only">{L_BUTTON_DELETE}</span>
+					</a>
+				<!-- ENDIF -->
+
+				<!-- IF U_REPORT -->
+					<a href="{U_REPORT}" title="{L_REPORT_PM}">
+	      		<i class="fa fa-exclamation-triangle" style="vertical-align: middle;"></i>
+						<span class="sr-only">{L_BUTTON_REPORT}</span>
+					</a>
+				<!-- ENDIF -->
+
+				<!-- IF U_QUOTE -->
+					<a href="{U_QUOTE}" title="{L_POST_QUOTE_PM}">
+	      		<i class="fa fa-quote-left" style="vertical-align: middle;"></i>
+						<span class="sr-only">{L_BUTTON_QUOTE}</span>
+					</a>
+				<!-- ENDIF -->
+
+				<!-- IF U_EDIT -->
+					<a href="{U_EDIT}" title="{L_POST_EDIT_PM}">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+						<span class="sr-only">{L_BUTTON_EDIT}</span>
+					</a>
+				<!-- ENDIF -->
+				<!-- EVENT ucp_pm_viewmessage_post_buttons_after -->
+				<!-- ENDIF -->
+				</div>
+				<!-- EVENT ucp_pm_viewmessage_post_buttons_list_after -->
+
+	  </div>
+	  <div class="pm-body" >
+	    <div class="pm-profile">
+	      <div class="pm-profile-inner">
+	        <div class="pm-profile-user">
+							<!-- EVENT ucp_pm_viewmessage_avatar_before -->
+	            {AUTHOR_AVATAR}
+							<!-- EVENT ucp_pm_viewmessage_avatar_after -->
+	            <div>
+	                <div class="pm-profile-username">
+	                    {MESSAGE_AUTHOR_FULL}
+	                </div>
+	                <div class="pm-profile-rank">
+										<!-- EVENT ucp_pm_viewmessage_rank_before -->
+	                    <!-- IF RANK_TITLE or RANK_IMG -->
+												{RANK_TITLE}
+											<!-- IF RANK_TITLE and RANK_IMG -->
+												<br>
+											<!-- ENDIF -->
+												{RANK_IMG}
+											<!-- ENDIF -->
+										<!-- EVENT ucp_pm_viewmessage_rank_after -->
+	                </div>
+	            </div>
+	        </div>
+	        <div class="pm-date">
+	            {SENT_DATE}
+	        </div>
+	    </div>
+	  </div>
+
+	  <div class="pm-message-new">
+	    <p class="pm-text">
+	        {MESSAGE}
+	    </p>
+			<!-- IF S_HAS_ATTACHMENTS -->
+				<dl class="attachbox">
+					<dt>
+						{L_ATTACHMENTS}
+					</dt>
+					<!-- BEGIN attachment -->
+						<dd>{attachment.DISPLAY_ATTACHMENT}</dd>
+					<!-- END attachment -->
+				</dl>
+			<!-- ENDIF -->
+
+			<!-- IF S_DISPLAY_NOTICE -->
+				<div class="post-notice error">{L_DOWNLOAD_NOTICE}</div>
+			<!-- ENDIF -->
+
+			<!-- IF EDITED_MESSAGE or EDIT_REASON -->
+			<div class="notice">{EDITED_MESSAGE}
+				<!-- IF EDIT_REASON --><br /><strong>{L_REASON}{L_COLON}</strong> <em>{EDIT_REASON}</em><!-- ENDIF -->
+			</div>
+			<!-- ENDIF -->
+
+			<!-- IF SIGNATURE -->
+				<div id="sig{MESSAGE_ID}" class="signature">{SIGNATURE}</div>
+			<!-- ENDIF -->
+	    </div>
+
+	</div>
+
+
+	</div>
+<!-- HERJA -->
+	<!--<div class="back2top">
+		<a href="#top" class="top" title="{L_BACK_TO_TOP}">
+			<i class="icon fa-chevron-circle-up fa-fw icon-gray" aria-hidden="true"></i>
+			<span class="sr-only">{L_BACK_TO_TOP}</span>
+		</a>
+	</div>-->
+
+	</div>
+</div>
+
+<!-- INCLUDE ucp_pm_message_after.html -->
+
+<!-- EVENT ucp_pm_viewmessage_options_before -->
+<!-- IF S_VIEW_MESSAGE -->
+<fieldset class="display-options">
+
+	<!-- IF S_MARK_OPTIONS --><label for="mark_option"><select name="mark_option" id="mark_option" style="max-width: 30%;">{S_MARK_OPTIONS}</select></label>&nbsp;<input class="button" style="height: calc(1.5em + 1.5rem + 2px); border-radius: .325rem;" type="submit" name="submit_mark" value="{L_GO}" /><!-- ENDIF -->
+	<!-- IF U_PREVIOUS_PM -->
+		<a href="{U_PREVIOUS_PM}" class="left-box arrow-{S_CONTENT_FLOW_BEGIN}">
+			<i class="icon fa-angle-{S_CONTENT_FLOW_BEGIN} fa-fw icon-black" aria-hidden="true"></i><span>{L_VIEW_PREVIOUS_PM}</span>
+		</a>
+	<!-- ENDIF -->
+	<!-- IF U_NEXT_PM -->
+		<a href="{U_NEXT_PM}" class="right-box arrow-{S_CONTENT_FLOW_END}">
+			<i class="icon fa-angle-{S_CONTENT_FLOW_END} fa-fw icon-black" aria-hidden="true"></i><span>{L_VIEW_NEXT_PM}</span>
+		</a>
+	<!-- ENDIF -->
+	<!-- BEGYNN MOVE TO FOLDER -->
+	<!-- IF not S_UNREAD and not S_SPECIAL_FOLDER --><label for="dest_folder"><!-- IF S_VIEW_MESSAGE -->{L_MOVE_TO_FOLDER}{L_COLON}<!-- ELSE -->{L_MOVE_MARKED_TO_FOLDER}<!-- ENDIF --> <select style="max-width: 30%;" name="dest_folder" id="dest_folder" class="select-limited">{S_TO_FOLDER_OPTIONS}</select></label> <input class="button" style="height: calc(1.5em + 1.5rem + 2px); border-radius: .325rem;" type="submit" name="move_pm" value="{L_GO}" /><!-- ENDIF -->
+	<input type="hidden" name="marked_msg_id[]" value="{MSG_ID}" />
+	<input type="hidden" name="cur_folder_id" value="{CUR_FOLDER_ID}" />
+	<input type="hidden" name="p" value="{MSG_ID}" />
+</fieldset>
+<!-- ENDIF -->
+
+<!-- INCLUDE ucp_pm_message_footer.html -->
+
+<!-- IF S_DISPLAY_HISTORY --><!-- INCLUDE ucp_pm_history.html --><!-- ENDIF -->
+
+<!-- INCLUDE ucp_footer.html -->
