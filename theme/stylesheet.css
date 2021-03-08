@@ -7,6 +7,7 @@
     --------------------------------------------------------------
 */
 
+@import url("w3.css?v=3.3");
 @import url("normalize.css?v=3.3");
 @import url("base.css?v=3.3");
 @import url("utilities.css?v=3.3");
@@ -19,4 +20,4 @@
 @import url("icons.css?v=3.3");
 @import url("colours.css?v=3.3");
 @import url("responsive.css?v=3.3");
-@import url("animate.css");
+@import url("animate.css?v=3.3");
