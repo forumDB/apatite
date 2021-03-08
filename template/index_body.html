@@ -54,7 +54,9 @@
 						<!-- IF S_REGISTER_ENABLED -->
 						<div class="login-bottomtext">
 							<p style="text-align: center;">
-								Don't have an account? <a href="{U_REGISTER}">{L_REGISTER} here</a>
+								<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
+								<a href="{U_REGISTER}">{L_REGISTER}</a>
+								<!-- ENDIF -->
 							</p>
 						</div>
 						<!-- ENDIF -->

@@ -88,14 +88,16 @@
 		<div class="pageNav">
 			<ul class="pageNav-ul">
 				<li class="pageNav-il">
-					<a href="index.php" class="pageNav-link">Home</a>
+					<a href="{U_INDEX}" class="pageNav-link">{{ L_SITE_HOME }}</a>
 				</li>
 				<li class="pageNav-il">
-					<a href="search.php?search_id=newposts" class="pageNav-link">What's new?</a>
+					<a href="{U_SEARCH_NEW}" class="pageNav-link">{L_SEARCH_NEW}</a>
 				</li>
+				<!-- IF not S_IS_BOT and S_DISPLAY_MEMBERLIST -->
 				<li class="pageNav-il">
-					<a href="memberlist.php" class="pageNav-link">Members</a>
+					<a href="{U_MEMBERLIST}" class="pageNav-link">{L_MEMBERLIST}</a>
 				</li>
+				<!-- ENDIF -->
 				<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
 				<li class="pageNav-il">
 					<a onclick="searchPopDown()" class="pageNav-link"><i class="fa fa-search"></i></a>
