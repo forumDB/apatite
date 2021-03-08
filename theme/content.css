@@ -146,13 +146,22 @@ ul.forums {
 .forum-icon-topic_read_locked img,
 .forum-icon-topic_read_locked_mine img,
 .forum-icon-topic_read_hot img,
-.forum-icon-topic_read_hot_mine img {
+.forum-icon-topic_read_hot_mine img,
+.forum-icon-sticky_read img {
 	background-color: #e1e1e1;
 }
 
 .forum-icon-forum_unread img,
 .forum-icon-forum_unread_subforum img,
-.forum-icon-forum-unread-locked img {
+.forum-icon-forum-unread-locked img,
+.forum-icon-forum_unread_locked img,
+.forum-icon-topic_unread img,
+.forum-icon-topic_unread_mine img,
+.forum-icon-topic_unread_locked img,
+.forum-icon-topic_unread_locked_mine img,
+.forum-icon-topic_unread_hot img,
+.forum-icon-topic_unread_hot_mine img,
+.forum-icon-sticky_unread img {
 	background-color: var(--main-theme-color);
 }
 
@@ -162,7 +171,7 @@ ul.forums {
 .forum-icon-topic_unread_locked_mine::after {
 	display: block;
   	content: ' ';
-	background-image: url(icons/icons-new/mine.svg);
+	background-image: url(icons/mine.svg);
 	background-size: 18px 18px;
 	height: 18px;
 	width: 18px;
@@ -177,7 +186,7 @@ ul.forums {
 .forum-icon-topic_unread_locked_mine::before {
 	display: block;
   	content: ' ';
-	background-image: url(icons/icons-new/locked.svg);
+	background-image: url(icons/locked.svg);
 	background-size: 18px 18px;
 	height: 18px;
 	width: 18px;
